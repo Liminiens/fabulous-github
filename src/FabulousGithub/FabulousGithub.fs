@@ -2,6 +2,7 @@
 namespace FabulousGithub
 
 open System.Diagnostics
+open System
 open Fabulous.Core
 open Fabulous.DynamicViews
 open Xamarin.Forms
@@ -59,8 +60,8 @@ module App =
     // Note, this declaration is needed if you enable LiveUpdate
     let program = Program.mkProgram init update view
 
-type App () as app = 
-    inherit Application ()
+type App() as app = 
+    inherit Application()
 
     let runner = 
         App.program
@@ -69,16 +70,7 @@ type App () as app =
 #endif
         |> Program.runWithDynamicView app
 
-#if DEBUG
-    // Uncomment this line to enable live update in debug mode. 
-    // See https://fsprojects.github.io/Fabulous/tools.html for further  instructions.
-    //
-    //do runner.EnableLiveUpdate()
-#endif    
-
-    // Uncomment this code to save the application state to app.Properties using Newtonsoft.Json
     // See https://fsprojects.github.io/Fabulous/models.html for further  instructions.
-#if APPSAVE
     let modelId = "model"
     override __.OnSleep() = 
 
@@ -106,6 +98,4 @@ type App () as app =
     override this.OnStart() = 
         Console.WriteLine "OnStart: using same logic as OnResume()"
         this.OnResume()
-#endif
-
 

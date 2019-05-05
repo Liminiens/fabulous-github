@@ -2,6 +2,7 @@
 namespace FabulousGithub
 
 open System.Diagnostics
+open Octokit
 open System
 open Fabulous.Core
 open Fabulous.DynamicViews
